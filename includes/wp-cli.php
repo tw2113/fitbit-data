@@ -16,11 +16,19 @@ class ProcessFitBitData extends \WP_CLI_Command {
 	public function import( $args, $assoc_args ) {
 		$this->args       = $args;
 		$this->assoc_args = $assoc_args;
+
+
 	}
 
 	public function export( $args, $assoc_args ) {
 		$this->args       = $args;
 		$this->assoc_args = $assoc_args;
+	}
+
+	private function file_generator( $files ) {
+		foreach ( $files as $file ) {
+			yield $file;
+		}
 	}
 }
 \WP_CLI::add_command( 'fitbit', __NAMESPACE__ . '\ProcessFitBitData' );
