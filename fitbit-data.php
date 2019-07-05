@@ -27,3 +27,9 @@ function create_tables() {
 }
 register_activation_hook( __FILE__, __NAMESPACE__ . '\create_tables' );
 
+function load_includes() {
+	if ( defined( 'WP_CLI' ) && WP_CLI ) {
+		require_once 'includes/wp-cli.php';
+	}
+}
+add_action( 'plugins_loaded', __NAMESPACE__ . '\load_includes' );
