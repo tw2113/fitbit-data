@@ -24,6 +24,33 @@ function create_tables() {
  		PRIMARY KEY (id)
  	) {$charset_collate};";
 	dbDelta( $sql );
+
+	$table_name = $wpdb->prefix . 'fitbit_distance';
+	$sql = "CREATE TABLE $table_name (
+ 		id INTEGER NOT NULL AUTO_INCREMENT,
+ 		dateTime DATETIME NOT NULL,
+ 		distance CHAR(6),
+ 		PRIMARY KEY (id)
+	) {$charset_collate};";
+	dbDelta( $sql );
+
+	//* Create the teams table
+	$table_name = $wpdb->prefix . 'fitbit_exercise';
+	$sql = "CREATE TABLE $table_name (
+ 		id INTEGER NOT NULL AUTO_INCREMENT,
+ 		logId VARCHAR(20),
+ 		activityName VARCHAR(50),
+ 		activityTypeId VARCHAR(50),
+ 		averageHeartRate CHAR(10),
+ 		calories CHAR(5),
+ 		distance VARCHAR(15),
+ 		duration VARCHAR(15),
+ 		activeDuration VARChAR(15),
+ 		steps VARCHAR(6),
+ 		startTime DATETIME NOT NULL,
+ 		PRIMARY KEY (id)
+	) {$charset_collate};";
+	dbDelta( $sql );
 }
 register_activation_hook( __FILE__, __NAMESPACE__ . '\create_tables' );
 
