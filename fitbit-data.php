@@ -58,5 +58,8 @@ function load_includes() {
 	if ( defined( 'WP_CLI' ) && WP_CLI ) {
 		require_once 'includes/wp-cli.php';
 	}
+
+	require_once 'classes/exerciseReceipts.php';
+	require_once 'includes/functions.php';
 }
 add_action( 'plugins_loaded', __NAMESPACE__ . '\load_includes' );
